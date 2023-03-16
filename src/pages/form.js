@@ -7,17 +7,25 @@ export default function Simpleform() {
   const router = useRouter()
   const { register, handleSubmit, formState: {errors} } = useForm();
   const onSubmit = (data) => {
+    fetch('/api/users',{
+      method:'POST',
+      header:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    // alert(`email: ${data.email}`)
     console.log(data);
-    router.push('/showlist')
+    // router.push('/showlist')
   };
+
     return (
     <>
       <div className="container">
             <div className="simple_form">
               <h2 className="heading"> Simple form</h2>
               <p className="subtile"> A simple HTML From</p>
-              <form action="/submit" method='post' onSubmit={handleSubmit(onSubmit)}>
-                
+              <form action="#" method='POST' onSubmit={handleSubmit(onSubmit)}>
                 <div className="form_group">
                   <label> Email</label>
                   <input type="text" className="form_input"  {...register("email", {required: true,  pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g })} id="email" name= "email" />

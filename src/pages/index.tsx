@@ -1,9 +1,7 @@
+import Simpleform from "./form"
 
-import Addform from "./form"
 export default function Home() {
-  return (
-    <>
-      <Addform></Addform>
-    </>
-  )
+  return <div>
+    <Simpleform></Simpleform>
+  </div>
 }
